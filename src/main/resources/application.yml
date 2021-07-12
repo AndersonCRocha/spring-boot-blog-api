@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATABASE_SERVER:localhost:5432}/${DATABASE_NAME:blog-api}
+    password: postgres
+    username: postgres
+
+  jpa:
+    database: POSTGRESQL
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 16KB
+      max-file-size: 50MB
+      max-request-size: 55MB

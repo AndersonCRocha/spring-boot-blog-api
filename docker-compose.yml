@@ -1,0 +1,33 @@
+version: "3"
+services:
+  database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=blog-api
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - local
+
+  backend:
+    build: .
+    image: anderson-blog-api
+    environment:
+      - DATABASE_SERVER=database:5432
+      - DATABASE_NAME=blog-api
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    links:
+      - database
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
