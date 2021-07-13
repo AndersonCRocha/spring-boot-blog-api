@@ -1,9 +1,23 @@
+app:
+  security:
+    jwt:
+      prefix: Bearer
+      defaultId: blog-api
+      accessTokenValidity: 15m
+      refreshTokenValidity: 30d
+      secretKey: aeee60be0780d78fe82de153c96607ee78e754e0188e3416a45ce0d7e2d1231e
+      authoritiesKey: AUTHORITIES
+
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${DATABASE_SERVER:localhost:5432}/${DATABASE_NAME:blog-api}
     password: postgres
     username: postgres
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
 
   jpa:
     database: POSTGRESQL

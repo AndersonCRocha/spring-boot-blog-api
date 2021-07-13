@@ -5,5 +5,74 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd"
 >
 
+  <changeSet id="create-sequence-hibernate_sequence" author="Anderson Rocha">
+    <preConditions>
+      <not>
+        <sequenceExists sequenceName="hibernate_sequence" />
+      </not>
+    </preConditions>
+    <createSequence sequenceName="hibernate_sequence" />
+  </changeSet>
+
+  <changeSet id="create-table-users" author="Anderson Rocha">
+    <createTable tableName="users">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="pk_users" nullable="false" />
+      </column>
+      <column name="version" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="updated_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="full_name" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="email" type="VARCHAR(60)">
+        <constraints nullable="false" unique="true" uniqueConstraintName="unique_users__email" />
+      </column>
+      <column name="password" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="enabled" type="BOOLEAN" defaultValueBoolean="true">
+        <constraints nullable="false"/>
+      </column>
+      <column name="blocked" type="BOOLEAN" defaultValueBoolean="false">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create-table-user_refresh_token" author="Anderson Rocha">
+    <createTable tableName="user_refresh_token">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="pk_user_refresh_token" nullable="false" />
+      </column>
+      <column name="version" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="updated_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="user_id" type="BIGINT">
+        <constraints
+          nullable="false" foreignKeyName="fk_user_refresh_token__user" referencedTableName="users"
+          referencedColumnNames="id" checkConstraint="true"
+        />
+      </column>
+      <column name="token" type="TEXT">
+        <constraints nullable="false"  />
+      </column>
+      <column name="validity" type="TIMESTAMP WITHOUT TIMEZONE">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
 
 </databaseChangeLog>
