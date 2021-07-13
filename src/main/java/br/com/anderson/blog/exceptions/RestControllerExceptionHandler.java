@@ -1,5 +1,6 @@
 package br.com.anderson.blog.exceptions;
 
+import br.com.anderson.blog.security.exception.InvalidCredentialsException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
@@ -7,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -26,10 +30,8 @@ public class RestControllerExceptionHandler {
     this.messageSource = messageSource;
   }
 
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<ProblemDetails> handleMethodArgumentNotValidException(
-    MethodArgumentNotValidException exception
-  ) {
+  @ExceptionHandler(BindException.class)
+  public ResponseEntity<ProblemDetails> handleMethodArgumentNotValidException(BindException exception) {
     List<ProblemDetails.Error> problemErrors = exception.getBindingResult().getAllErrors().stream()
       .map(objectError -> {
         String name = objectError.getObjectName();
@@ -51,11 +53,16 @@ public class RestControllerExceptionHandler {
     return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.BAD_REQUEST);
   }
 
-
   @ExceptionHandler({ InvalidRefreshTokenException.class, IllegalArgumentException.class})
   public ResponseEntity<ProblemDetails> handleInvalidRefreshTokenException(RuntimeException exception) {
     ProblemDetails problem = this.buildProblemDetails(HttpStatus.BAD_REQUEST, exception.getMessage());
     return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+  public ResponseEntity<ProblemDetails> handleHttpMediaTypeNotSupportedException(Exception exception) {
+    ProblemDetails problem = this.buildProblemDetails(HttpStatus.UNSUPPORTED_MEDIA_TYPE, exception.getMessage());
+    return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.UNSUPPORTED_MEDIA_TYPE);
   }
 
   @ExceptionHandler(EntityNotFoundException.class)
@@ -72,6 +79,12 @@ public class RestControllerExceptionHandler {
     return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.FORBIDDEN);
   }
 
+  @ExceptionHandler(InvalidCredentialsException.class)
+  public ResponseEntity<ProblemDetails> handleInvalidCredentialsException(InvalidCredentialsException exception) {
+    ProblemDetails problem = this.buildProblemDetails(HttpStatus.UNAUTHORIZED, exception.getMessage());
+    return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.UNAUTHORIZED);
+  }
+
   @ExceptionHandler(UserAlreadyExistsException.class)
   public ResponseEntity<ProblemDetails> handleUserAlreadyExistsException(UserAlreadyExistsException exception) {
     ProblemDetails problem = this.buildProblemDetails(HttpStatus.CONFLICT, exception.getMessage());
@@ -80,6 +93,7 @@ public class RestControllerExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ProblemDetails> handleException(Exception exception) {
+    exception.printStackTrace();
     ProblemDetails problem = this.buildProblemDetails(
       HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage(), Arrays.toString(exception.getStackTrace())
     );

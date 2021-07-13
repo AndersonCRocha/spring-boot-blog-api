@@ -10,7 +10,7 @@ import br.com.anderson.blog.exceptions.UserAlreadyExistsException;
 import br.com.anderson.blog.models.User;
 import br.com.anderson.blog.models.UserRefreshToken;
 import br.com.anderson.blog.security.config.JWTConfigurationProperties;
-import br.com.anderson.blog.security.exception.InvalidCredentials;
+import br.com.anderson.blog.security.exception.InvalidCredentialsException;
 import br.com.anderson.blog.security.model.UserDetailsImpl;
 import br.com.anderson.blog.security.service.AuthenticationService;
 import br.com.anderson.blog.security.utils.JWTUtils;
@@ -48,7 +48,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
   @Override
   public JWTTokenDTO login(LoginDTO loginDTO) {
-    final InvalidCredentials invalidCredentialsException = new InvalidCredentials("Invalid email and/or password");
+    final InvalidCredentialsException invalidCredentialsException = new InvalidCredentialsException("Invalid email and/or password");
 
     User user = this.userService.findByEmail(loginDTO.getEmail())
       .orElseThrow(() -> invalidCredentialsException);

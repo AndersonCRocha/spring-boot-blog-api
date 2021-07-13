@@ -3,6 +3,7 @@ package br.com.anderson.blog.controllers;
 import br.com.anderson.blog.dtos.CommentDTO;
 import br.com.anderson.blog.dtos.ImageDTO;
 import br.com.anderson.blog.dtos.PostDTO;
+import br.com.anderson.blog.exceptions.CustomBindException;
 import br.com.anderson.blog.models.Image;
 import br.com.anderson.blog.models.Post;
 import br.com.anderson.blog.services.CommentService;
@@ -13,7 +14,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -56,8 +59,14 @@ public class PostController {
       .map(post -> new PostDTO(post, this.extractImageDTOFromSavedPost(post)));
   }
 
-  @PostMapping
-  public ResponseEntity<PostDTO> create(@ModelAttribute @Valid PostDTO postDTO) throws IOException {
+  @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  public ResponseEntity<PostDTO> create(
+    @ModelAttribute @Valid PostDTO postDTO, BindingResult bindingResult
+  ) throws IOException, CustomBindException {
+    if (bindingResult.hasErrors()) {
+      throw new CustomBindException(bindingResult);
+    }
+
     MultipartFile file = postDTO.getFile();
     Image image = null;
     if (Objects.nonNull(file)) {
