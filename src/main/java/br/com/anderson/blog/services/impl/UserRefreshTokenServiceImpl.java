@@ -31,7 +31,7 @@ public class UserRefreshTokenServiceImpl
   }
 
   @Override
-  protected JpaRepository<UserRefreshToken, Long> getRepository() {
+  protected UserRefreshTokenRepository getRepository() {
     return this.repository;
   }
 

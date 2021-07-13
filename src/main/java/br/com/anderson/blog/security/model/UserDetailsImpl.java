@@ -22,6 +22,10 @@ public class UserDetailsImpl implements UserDetails {
     return Collections.singletonList(new SimpleGrantedAuthority("USER"));
   }
 
+  public User getUser() {
+    return user;
+  }
+
   @Override
   public String getPassword() {
     return this.user.getPassword();
@@ -51,4 +55,5 @@ public class UserDetailsImpl implements UserDetails {
   public boolean isEnabled() {
     return BooleanUtils.isTrue(this.user.getEnabled());
   }
+
 }
