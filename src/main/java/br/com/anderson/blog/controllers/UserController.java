@@ -1,8 +1,7 @@
 package br.com.anderson.blog.controllers;
 
-import br.com.anderson.blog.security.model.UserDetailsImpl;
-import br.com.anderson.blog.services.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import br.com.anderson.blog.dtos.UserDTO;
+import br.com.anderson.blog.security.utils.AuthenticationUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,15 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("users")
 public class UserController {
 
-  private final UserService service;
+  private final AuthenticationUtils authenticationUtils;
 
-  public UserController(UserService service) {
-    this.service = service;
+  public UserController(AuthenticationUtils authenticationUtils) {
+    this.authenticationUtils = authenticationUtils;
   }
 
   @GetMapping("me")
-  public String me(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-    return userDetails.getUsername();
+  public UserDTO me() {
+    return new UserDTO(this.authenticationUtils.getAuthenticatedUser());
   }
 
 }
