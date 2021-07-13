@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
 
@@ -41,7 +42,7 @@ public class CommentController {
   }
 
   @PostMapping
-  public ResponseEntity<CommentDTO> create(@RequestBody CommentDTO commentDTO) throws IOException {
+  public ResponseEntity<CommentDTO> create(@RequestBody @Valid CommentDTO commentDTO) throws IOException {
     Post post = new Post();
     post.setId(commentDTO.getPost().getId());
 

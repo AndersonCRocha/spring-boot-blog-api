@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
 import java.text.MessageFormat;
@@ -56,7 +57,7 @@ public class PostController {
   }
 
   @PostMapping
-  public ResponseEntity<PostDTO> create(@ModelAttribute PostDTO postDTO) throws IOException {
+  public ResponseEntity<PostDTO> create(@ModelAttribute @Valid PostDTO postDTO) throws IOException {
     MultipartFile file = postDTO.getFile();
     Image image = null;
     if (Objects.nonNull(file)) {

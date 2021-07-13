@@ -1,18 +1,56 @@
 package br.com.anderson.blog.exceptions;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class RestControllerExceptionHandler {
+
+  private final MessageSource messageSource;
+
+  public RestControllerExceptionHandler(MessageSource messageSource) {
+    this.messageSource = messageSource;
+  }
+
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<ProblemDetails> handleMethodArgumentNotValidException(
+    MethodArgumentNotValidException exception
+  ) {
+    List<ProblemDetails.Error> problemErrors = exception.getBindingResult().getAllErrors().stream()
+      .map(objectError -> {
+        String name = objectError.getObjectName();
+        if (objectError instanceof FieldError) {
+          name = ((FieldError) objectError).getField();
+        }
+
+        String message = this.messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
+        return new ProblemDetails.Error()
+          .setName(name)
+          .setMessage(message);
+      })
+      .collect(Collectors.toList());
+
+    String defaultMessage = "Some fields are invalid!";
+    ProblemDetails problem = this.buildProblemDetails(HttpStatus.BAD_REQUEST, defaultMessage)
+      .setErrors(problemErrors);
+
+    return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.BAD_REQUEST);
+  }
+
 
   @ExceptionHandler({ InvalidRefreshTokenException.class, IllegalArgumentException.class})
   public ResponseEntity<ProblemDetails> handleInvalidRefreshTokenException(RuntimeException exception) {

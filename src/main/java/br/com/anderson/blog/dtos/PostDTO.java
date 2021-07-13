@@ -4,6 +4,8 @@ import br.com.anderson.blog.models.Post;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostDTO {
 
@@ -30,6 +32,7 @@ public class PostDTO {
     return this;
   }
 
+  @NotBlank
   public String getContent() {
     return content;
   }

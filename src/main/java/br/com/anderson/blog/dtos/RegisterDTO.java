@@ -1,11 +1,14 @@
 package br.com.anderson.blog.dtos;
 
+import javax.validation.constraints.NotBlank;
+
 public class RegisterDTO {
 
   private String fullName;
   private String email;
   private String password;
 
+  @NotBlank
   public String getFullName() {
     return fullName;
   }
@@ -14,6 +17,7 @@ public class RegisterDTO {
     return this;
   }
 
+  @NotBlank
   public String getEmail() {
     return email;
   }
@@ -22,6 +26,7 @@ public class RegisterDTO {
     return this;
   }
 
+  @NotBlank
   public String getPassword() {
     return password;
   }

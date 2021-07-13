@@ -88,15 +88,17 @@ public class ProblemDetails {
     public String getName() {
       return name;
     }
-    public void setName(String name) {
+    public Error setName(String name) {
       this.name = name;
+      return this;
     }
 
     public String getMessage() {
       return message;
     }
-    public void setMessage(String message) {
+    public Error setMessage(String message) {
       this.message = message;
+      return this;
     }
   }
 

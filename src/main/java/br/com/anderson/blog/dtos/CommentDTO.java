@@ -2,6 +2,9 @@ package br.com.anderson.blog.dtos;
 
 import br.com.anderson.blog.models.Comment;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class CommentDTO {
 
   private Long id;
@@ -26,6 +29,7 @@ public class CommentDTO {
     return this;
   }
 
+  @NotBlank
   public String getContent() {
     return content;
   }
@@ -34,6 +38,7 @@ public class CommentDTO {
     return this;
   }
 
+  @NotNull
   public PostDTO getPost() {
     return post;
   }

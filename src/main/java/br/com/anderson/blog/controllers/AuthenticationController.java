@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -32,12 +33,12 @@ public class AuthenticationController {
   }
 
   @PostMapping("refresh")
-  public JWTTokenDTO refresh(@RequestBody RefreshTokenDTO refreshTokenDTO) {
+  public JWTTokenDTO refresh(@RequestBody @Valid RefreshTokenDTO refreshTokenDTO) {
     return this.service.refresh(refreshTokenDTO);
   }
 
   @PostMapping("register")
-  public ResponseEntity<UserDTO> register(@RequestBody RegisterDTO registerDTO, HttpServletRequest request) {
+  public ResponseEntity<UserDTO> register(@RequestBody @Valid RegisterDTO registerDTO, HttpServletRequest request) {
     UserDTO userDTO = this.service.register(registerDTO);
     URI uri = ServletUriComponentsBuilder
       .fromContextPath(request)

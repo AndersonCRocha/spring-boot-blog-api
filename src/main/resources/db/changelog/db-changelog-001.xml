@@ -180,4 +180,43 @@
     />
   </changeSet>
 
+  <changeSet id="create-table-albums" author="Anderson Rocha">
+    <createTable tableName="albums">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="pk_albums" nullable="false" />
+      </column>
+      <column name="version" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="updated_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="name" type="VARCHAR">
+        <constraints nullable="false" />
+      </column>
+      <column name="owner_id" type="BIGINT">
+        <constraints
+          nullable="false" foreignKeyName="fk_albums__owner" referencedTableName="users"
+          referencedColumnNames="id" checkConstraint="true"
+        />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create-linking-between-image-and-album" author="Anderson Rocha">
+    <addColumn tableName="images">
+      <column name="album_id" type="BIGINT">
+        <constraints nullable="true" />
+      </column>
+    </addColumn>
+
+    <addForeignKeyConstraint
+      baseTableName="images" baseColumnNames="album_id" constraintName="fk_images__albums"
+      referencedTableName="albums" referencedColumnNames="id" onDelete="CASCADE"
+    />
+  </changeSet>
+
 </databaseChangeLog>
