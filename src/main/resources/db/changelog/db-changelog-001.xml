@@ -73,8 +73,8 @@
         <constraints nullable="false" />
       </column>
     </createTable>
-  </changeSet
-  >
+  </changeSet>
+
   <changeSet id="create-table-posts" author="Anderson Rocha">
     <createTable tableName="posts">
       <column name="id" type="BIGINT" autoIncrement="true">
@@ -100,6 +100,38 @@
       </column>
       <column name="image" type="BYTEA" />
       <column name="image_mime_type" type="VARCHAR(255)" />
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create-table-comments" author="Anderson Rocha">
+    <createTable tableName="comments">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="pk_comments" nullable="false" />
+      </column>
+      <column name="version" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="updated_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="post_id" type="BIGINT">
+        <constraints
+          nullable="false" foreignKeyName="fk_comments__post" referencedTableName="posts"
+          referencedColumnNames="id" checkConstraint="true"
+        />
+      </column>
+      <column name="owner_id" type="BIGINT">
+        <constraints
+          nullable="false" foreignKeyName="fk_comments__owner" referencedTableName="users"
+          referencedColumnNames="id" checkConstraint="true"
+        />
+      </column>
+      <column name="content" type="TEXT">
+        <constraints nullable="false" />
+      </column>
     </createTable>
   </changeSet>
 

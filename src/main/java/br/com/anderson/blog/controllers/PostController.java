@@ -1,7 +1,9 @@
 package br.com.anderson.blog.controllers;
 
+import br.com.anderson.blog.dtos.CommentDTO;
 import br.com.anderson.blog.dtos.PostDTO;
 import br.com.anderson.blog.models.Post;
+import br.com.anderson.blog.services.CommentService;
 import br.com.anderson.blog.services.PostService;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -28,9 +30,11 @@ import java.text.MessageFormat;
 public class PostController {
 
   private final PostService service;
+  private final CommentService commentService;
 
-  public PostController(PostService service) {
+  public PostController(PostService service, CommentService commentService) {
     this.service = service;
+    this.commentService = commentService;
   }
 
   @GetMapping("{id}")
@@ -78,6 +82,12 @@ public class PostController {
       .header(HttpHeaders.CONTENT_TYPE, post.getImageMimeType())
       .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"%s\"".formatted(fileName))
       .body(new ByteArrayResource(post.getImage()));
+  }
+
+  @GetMapping("{id}/comments")
+  protected Page<CommentDTO> listComments(@PathVariable Long id, @PageableDefault Pageable pageable) {
+    Post post = this.service.findOrFailById(id);
+    return this.commentService.findByPost(post, pageable).map(CommentDTO::new);
   }
 
   private URI generateImageUri(Long postId) {

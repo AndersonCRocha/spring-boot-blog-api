@@ -8,35 +8,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "posts")
-public class Post extends BasePersistent {
+@Table(name = "comments")
+public class Comment extends BasePersistent {
 
   private String content;
-  private byte[] image;
-  private String imageMimeType;
+  private Post post;
   private User owner;
 
   public String getContent() {
     return content;
   }
-  public Post setContent(String content) {
+  public Comment setContent(String content) {
     this.content = content;
     return this;
   }
 
-  public byte[] getImage() {
-    return image;
+  @ManyToOne(fetch = FetchType.LAZY)
+  public Post getPost() {
+    return post;
   }
-  public Post setImage(byte[] image) {
-    this.image = image;
-    return this;
-  }
-
-  public String getImageMimeType() {
-    return imageMimeType;
-  }
-  public Post setImageMimeType(String imageMimeType) {
-    this.imageMimeType = imageMimeType;
+  public Comment setPost(Post post) {
+    this.post = post;
     return this;
   }
 
@@ -44,7 +36,7 @@ public class Post extends BasePersistent {
   public User getOwner() {
     return owner;
   }
-  public Post setOwner(User owner) {
+  public Comment setOwner(User owner) {
     this.owner = owner;
     return this;
   }

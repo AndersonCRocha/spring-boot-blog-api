@@ -14,8 +14,8 @@ import java.util.Arrays;
 @RestControllerAdvice
 public class RestControllerExceptionHandler {
 
-  @ExceptionHandler(InvalidRefreshTokenException.class)
-  public ResponseEntity<ProblemDetails> handleInvalidRefreshTokenException(InvalidRefreshTokenException exception) {
+  @ExceptionHandler({ InvalidRefreshTokenException.class, IllegalArgumentException.class})
+  public ResponseEntity<ProblemDetails> handleInvalidRefreshTokenException(RuntimeException exception) {
     ProblemDetails problem = this.buildProblemDetails(HttpStatus.BAD_REQUEST, exception.getMessage());
     return new ResponseEntity<>(problem, this.getDefaultHeaders(), HttpStatus.BAD_REQUEST);
   }
