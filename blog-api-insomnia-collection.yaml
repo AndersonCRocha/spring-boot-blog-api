@@ -1,0 +1,2842 @@
+_type: export
+__export_format: 4
+__export_date: 2021-07-13T17:04:23.076Z
+__export_source: insomnia.desktop.app:v2021.4.1
+resources:
+  - _id: req_b2f7ac3be2e549efbc2a9623eb3b4883
+    parentId: fld_c0781a109b47450ba564e7d5ba0075aa
+    modified: 1626143145093
+    created: 1626135064721
+    url: "{{ _.baseUrl }}/auth/refresh"
+    name: Refresh
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"refreshToken": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZTJAZW1haWwuY29tIiwiQVVUSE9SSVRJRVMiOlsiUkVGUkVTSF9UT0tFTiJdLCJleHAiOjE2Mjg3MzQ5MzQsImlhdCI6MTYyNjE0MjkzNCwianRpIjoiYmxvZy1hcGkifQ.mrQF4tOKPSeEjQOyzCi9B5Ij9iSDftGYoCN_LjY9RPVoJ0hHOZhXT8HQ8ASf7RMwbQfQFn_Qx4TFCzqmb1Sm_Q"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_0f8b2681686144e1ae405ccf000c5244
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626135064721
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_c0781a109b47450ba564e7d5ba0075aa
+    parentId: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    modified: 1626140270354
+    created: 1626128874411
+    name: Authentication
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1626140161998
+    _type: request_group
+  - _id: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    parentId: wrk_0bb379b3818f451f8b23664e3cef334b
+    modified: 1626133845977
+    created: 1626128868436
+    name: Blog API
+    description: ""
+    environment:
+      baseUrl: http://localhost:8080
+      accessToken: "{% response 'body', 'req_e7cc819951b7497486861b34b556c437',
+        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
+    environmentPropertyOrder:
+      "&":
+        - baseUrl
+        - accessToken
+    metaSortKey: -1626128868436
+    _type: request_group
+  - _id: wrk_0bb379b3818f451f8b23664e3cef334b
+    parentId: null
+    modified: 1620243940137
+    created: 1616797630933
+    name: New Cloud insomnia
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_e7cc819951b7497486861b34b556c437
+    parentId: fld_c0781a109b47450ba564e7d5ba0075aa
+    modified: 1626195021644
+    created: 1626128882040
+    url: "{{ _.baseUrl }}/auth/login"
+    name: Login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "teste2@email.com",
+        	"password": "teste123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication: {}
+    metaSortKey: -1626128882040
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c7304a70da434d348b0c7082a97148b2
+    parentId: fld_c0781a109b47450ba564e7d5ba0075aa
+    modified: 1626192385920
+    created: 1626131299248
+    url: "{{ _.baseUrl }}/auth/register"
+    name: Register
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"fullName": "teste",
+        	"email": "teste2@email.com",
+        	"password": "teste123"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication: {}
+    metaSortKey: -1624144671449.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d21418dc31e141b08c34c8cd6c5130cc
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626191862653
+    created: 1626191857701
+    url: "{{ _.baseUrl }}/albums"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626140162079.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_bb1abe784c704c8c869b5d4cef3a3272
+    parentId: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    modified: 1626177227064
+    created: 1626177224787
+    name: Albums
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1626140161985.5
+    _type: request_group
+  - _id: req_5f34e2aba8314d91ac7b1dcbbfd24803
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626192275064
+    created: 1626192261752
+    url: "{{ _.baseUrl }}/albums/12/photos/14"
+    name: Get photo
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626140162054.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a9164d40309f4cdb938f05cc4e1a4665
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626192305232
+    created: 1626192291702
+    url: "{{ _.baseUrl }}/albums/12/photos"
+    name: List photos
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626140162041.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_45eddb1008e149ffac035ffc58420bb1
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626192394234
+    created: 1626191843415
+    url: "{{ _.baseUrl }}/albums/12"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626140162029.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0a4406cf20ac488eb7d57db2dd013604
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626193310145
+    created: 1626133907526
+    url: "{{ _.baseUrl }}/albums"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Family party"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626140161979.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_85ea8055d0434ee28d2f2fc11eddc8db
+    parentId: fld_bb1abe784c704c8c869b5d4cef3a3272
+    modified: 1626191894129
+    created: 1626191039919
+    url: "{{ _.baseUrl }}/albums/12/photos"
+    name: Upload photo
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: file
+          value: ""
+          id: pair_e300c7ec8276480d8462d5ed90c240a8
+          type: file
+          multiline: null
+          fileName: C:\Users\ats\Pictures\Screenshots\Captura de Tela (1).png
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626139161372.875
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a918205cd36046d78fe5bd88213c7c69
+    parentId: fld_ce76cf5f66344aae8a642cd0f8c67f0b
+    modified: 1626143907271
+    created: 1626143898214
+    url: "{{ _.baseUrl }}/comments/8"
+    name: Find
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141498362
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ce76cf5f66344aae8a642cd0f8c67f0b
+    parentId: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    modified: 1626143902454
+    created: 1626143898190
+    name: Comments
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1626140161973
+    _type: request_group
+  - _id: req_61aad2df5a224a00bda6365ddd5e4a30
+    parentId: fld_ce76cf5f66344aae8a642cd0f8c67f0b
+    modified: 1626144989148
+    created: 1626143898228
+    url: "{{ _.baseUrl }}/comments/13"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141437974.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_05c116697d314f6ca1487c1cb61608cc
+    parentId: fld_ce76cf5f66344aae8a642cd0f8c67f0b
+    modified: 1626144665382
+    created: 1626143898223
+    url: "{{ _.baseUrl }}/comments"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141377587
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bb59a21287ee4ec9a1d75878d9c6249c
+    parentId: fld_ce76cf5f66344aae8a642cd0f8c67f0b
+    modified: 1626174464400
+    created: 1626143898198
+    url: "{{ _.baseUrl }}/comments"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"content": "Comment for post 5",
+        	"post": {
+        		"id": 5
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626134518179.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a641ad3648b74246b456ee31fae54840
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626195745205
+    created: 1626194988178
+    url: "{{ _.baseUrl }}/posts"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: content
+          value: Post de teste
+          id: pair_8d1a8193ff364a69911dae767d0a1c0e
+        - id: pair_fbb39dbba37f4ec495ec88f4ebd123ad
+          name: file
+          value: ""
+          description: ""
+          type: file
+          multiline: null
+          fileName: C:\Users\ats\Pictures\Screenshots\Captura de Tela (1).png
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_7b0ba7b52ed14b35a7523285cdf46b05
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141498412
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ef592283ed3441b09618f30d0f080f6c
+    parentId: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    modified: 1626140161948
+    created: 1626140161948
+    name: Posts
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1626140161948
+    _type: request_group
+  - _id: req_9895eb71a7cf4d698c386de4a42f7207
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626173359148
+    created: 1626141498362
+    url: "{{ _.baseUrl }}/posts/6"
+    name: Find
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141498362
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cf936ed6e25048278e0fac11860275eb
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626174434051
+    created: 1626142288861
+    url: "{{ _.baseUrl }}/posts/3"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141437974.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9b8af0ebb1f34b6382bbfcd0fc61e046
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626141783322
+    created: 1626141780130
+    url: "{{ _.baseUrl }}/posts"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141377587
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e5a6f2c1b66846ea8123187fffa84be9
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626195757652
+    created: 1626141256770
+    url: "{{ _.baseUrl }}/posts/20/image"
+    name: Get post image
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626141256812
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2c639e0ec3954c0797951ed42410d162
+    parentId: fld_ef592283ed3441b09618f30d0f080f6c
+    modified: 1626174423720
+    created: 1626144931113
+    url: "{{ _.baseUrl }}/posts/3/comments"
+    name: List post comments
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626138160766.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8126d0bc61a141d5a775c25e7f16f211
+    parentId: fld_65a120cd9da84652907f0eff97779656
+    modified: 1626145377743
+    created: 1626133907519
+    url: "{{ _.baseUrl }}/users/me"
+    name: Me
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1626128882040
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_65a120cd9da84652907f0eff97779656
+    parentId: fld_df1c94fde6cb44df97bca9c2c0a0a69a
+    modified: 1626133907510
+    created: 1626133907510
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1626128871423.5
+    _type: request_group
+  - _id: req_a7f5aad58fab44d2a10e9981b8ff2f5a
+    parentId: fld_a8f86635da7c4d79830dbec1fd026d11
+    modified: 1621560455656
+    created: 1616797644616
+    url: "{{ _.baseURL }}/login"
+    name: Login direto
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email":"default@example.com",
+          "password":"ats1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_9d33065be1eb431a96f155c3af9ade06
+    authentication: {}
+    metaSortKey: -810364782483
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a8f86635da7c4d79830dbec1fd026d11
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1619729873462
+    created: 1619729564466
+    name: Login/Logout/Refresh
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678475
+    _type: request_group
+  - _id: fld_9fcc05b5588a4c688f383cc3441bf90e
+    parentId: wrk_0bb379b3818f451f8b23664e3cef334b
+    modified: 1616797644516
+    created: 1616797644516
+    name: Resulth Cloud Backend
+    description: ""
+    environment: {}
+    environmentPropertyOrder: {}
+    metaSortKey: -1000000000
+    _type: request_group
+  - _id: req_f9a014844130481e9d90c2184bbbd278
+    parentId: fld_a8f86635da7c4d79830dbec1fd026d11
+    modified: 1619729608177
+    created: 1616797644580
+    url: "{{ _.baseURL }}/v1/login"
+    name: Erro Login
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: "{\r\n}"
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_3ffa606c339e4e61afcf117870d51d9c
+    authentication: {}
+    metaSortKey: -810364782433
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_249949e5302a45ae931f49534e0cb804
+    parentId: fld_a8f86635da7c4d79830dbec1fd026d11
+    modified: 1625514131665
+    created: 1616797644611
+    url: "{{ _.baseURL }}/login/refresh"
+    name: Refresh token direto
+    description: Refresh token
+    method: POST
+    body:
+      mimeType: ""
+      text: >
+        {
+          "refreshToken": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJSRUZSRVNIX1RPS0VOIl0sImp0aSI6InJlc3VsdGgtY2xvdWQiLCJzdWIiOiJkZWZhdWx0QGV4YW1wbGUuY29tIiwiaWF0IjoxNjI1NTE0MTA4LCJleHAiOjE2MjU2MDA1MDh9.HLyvzpnrryW9YMsOhfgB21D0kWg6KBY1Y4W2PMBqbQMz1Y3s_z_Ay2ydZEN2GGEet27UfEWAdrjUkH8ozg7BUg"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c94d935f574e412b8d2efcdb07521e5c
+    authentication: {}
+    metaSortKey: -810364782383
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2e849c3606e04d128a5218a57a2a8184
+    parentId: fld_a8f86635da7c4d79830dbec1fd026d11
+    modified: 1623871759986
+    created: 1616797644621
+    url: "{{ _.baseURL }}/login/social/validate"
+    name: Validando Login Social
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "key": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_3082395eb02f4bd88f4499f8c2095eab
+    authentication: {}
+    metaSortKey: -810364782333
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1b78b1096e444b71baa732560e799257
+    parentId: fld_a8f86635da7c4d79830dbec1fd026d11
+    modified: 1619729576211
+    created: 1616797644607
+    url: "{{ _.baseURL }}/login/logout"
+    name: Logout direto
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -810364782283
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a994f06cef834542acdf7b518c50bfb2
+    parentId: fld_a1345562691947d68c234e8e9afc022c
+    modified: 1623854182055
+    created: 1618316522512
+    url: "{{ _.baseURL }}/v1/access-profiles/5663/permissions"
+    name: Lista permissao acesso
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: Accept-Language
+        value: en-US
+        description: ""
+        id: pair_c46680d4673048778d96c8a338eae4b4
+        disabled: true
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618301122859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_a1345562691947d68c234e8e9afc022c
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849282047
+    created: 1618316466831
+    name: Access permissions
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678462.5
+    _type: request_group
+  - _id: req_8a1290feeeec4d1c92736afc40860c33
+    parentId: fld_76ad33691eef4088a365468d7e095b97
+    modified: 1623878869207
+    created: 1618254193740
+    url: "{{ _.baseURL }}/v1/access-profiles"
+    name: Cadastra perfil acesso
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+          "name": "Perfil TESTE",
+          "status": "ACTIVE",
+          "permissions":{
+            "content":[
+              {
+                "routine": {
+        					"id": 1,
+        					"name": "teste qualquer"
+        				},
+                "insert": "true",
+                "read": "false",
+                "update": "false",
+                "delete": "false"
+              }
+            ]
+          }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_73867e6ad7ea4cd0b4d9fbf786b4533c
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618254952361
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_76ad33691eef4088a365468d7e095b97
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849285562
+    created: 1618255090743
+    name: Access profiles
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678456.25
+    _type: request_group
+  - _id: req_603d504c35dc45ffbf08e02c5e6c4543
+    parentId: fld_76ad33691eef4088a365468d7e095b97
+    modified: 1620220933197
+    created: 1618254094010
+    url: "{{ _.baseURL }}/v1/access-profiles"
+    name: Lista perfil acesso
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618254952336
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2d5d18ee52bd4ae0afcfabf42239cfea
+    parentId: fld_76ad33691eef4088a365468d7e095b97
+    modified: 1623854146913
+    created: 1623710369291
+    url: "{{ _.baseURL }}/v1/access-profiles/permissions"
+    name: Lista todas as permissões para cadastro de um novo perfil
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: Accept-Language
+        value: en-US
+        description: ""
+        id: pair_1abdfc36bf5c430aa4198c1a53bd2fb6
+        disabled: true
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618254952323.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_05e96e1bbe644270aaeec9771ff33122
+    parentId: fld_76ad33691eef4088a365468d7e095b97
+    modified: 1619729481934
+    created: 1618254936288
+    url: "{{ _.baseURL }}/v1/access-profiles"
+    name: Deleta perfil acesso
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618254952311
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c493cb6f6569474682b924dddf2c8d30
+    parentId: fld_76ad33691eef4088a365468d7e095b97
+    modified: 1619729489247
+    created: 1618254952261
+    url: "{{ _.baseURL }}/v1/access-profiles"
+    name: Altera perfil acesso
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "PerfilAlterado",
+          "active": "true",
+          "permissions":{
+            "content":[
+              {
+                "name": "PermissaoAlterada",
+                "active": "true",
+                "create": "true",
+                "retrieve": "false",
+                "update": "false",
+                "delete": "false"
+              }
+            ]
+          }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_0a3a637bfd6c4ac1b65a8d74744a77fd
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1618254952261
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7896971d4d914e2e87fb40547ae41ba3
+    parentId: fld_2edce7493f4b4e57a98db084020085fd
+    modified: 1619729849049
+    created: 1616797644576
+    url: "{{ _.baseURL }}/actuator"
+    name: Lista do actuator
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706243
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_2edce7493f4b4e57a98db084020085fd
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1619729876242
+    created: 1619729845784
+    name: Actuator
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678450
+    _type: request_group
+  - _id: req_8d968b483eca44aba957348e085376f4
+    parentId: fld_ac55cb402cc545eb81ee4db6df352e12
+    modified: 1623850402051
+    created: 1623350002909
+    url: "{{ _.baseURL }}/v1/addresses/zip-code/45055340"
+    name: Busca endereço pelo CEP
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1622160460846.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ac55cb402cc545eb81ee4db6df352e12
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623350027362
+    created: 1623349984163
+    name: Addresses
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678446.875
+    _type: request_group
+  - _id: req_fd3cef990335493db84328df808514a7
+    parentId: fld_ac55cb402cc545eb81ee4db6df352e12
+    modified: 1623785498368
+    created: 1623778289292
+    url: "{{ _.baseURL }}/v1/translate/hello"
+    name: Traduzir
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: Accept-Language
+        value: en-US
+        description: ""
+        id: pair_e4cc61ec76ec41849c69efa773631502
+        disabled: true
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1622160460840.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ec7f89fca87e4d4a9786a7265803b5a7
+    parentId: fld_eafb90a8ad104712b48046ddc3252e81
+    modified: 1621524211603
+    created: 1616797644525
+    url: "{{ _.baseURL }}/v1/states/26/cities"
+    name: Lista cidades de MG
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706267
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_eafb90a8ad104712b48046ddc3252e81
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1622400359238
+    created: 1619729783256
+    name: Cities
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678443.75
+    _type: request_group
+  - _id: req_9c9aa4b6c33b41ac85af4be1f310f641
+    parentId: fld_eafb90a8ad104712b48046ddc3252e81
+    modified: 1625836215106
+    created: 1625836110767
+    url: "{{ _.baseURL }}/v1/states/search"
+    name: Pesquisar Cidade
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_bfd06ac594594f1ba0556d5b26d68f43
+        name: fields
+        value: country.name
+        description: ""
+      - id: pair_05ff2aa935d942cf9a6594621de635e5
+        name: term
+        value: brasil
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706255
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0bf0d0ba84cf4ce387911fc7679ef089
+    parentId: fld_eafb90a8ad104712b48046ddc3252e81
+    modified: 1619729792297
+    created: 1616797644534
+    url: "{{ _.baseURL }}/v1/cities"
+    name: Lista cidades
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706217
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_83f11b1829e943f4b60b11e56dba4388
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1624275434100
+    created: 1616797644548
+    url: "{{ _.baseURL }}/v1/companies/5601/logo"
+    name: Atualiza logotipo de uma empresa
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - type: file
+          name: file
+          disabled: false
+          fileName: C:\Users\ats\Pictures\Screenshots\Captura de Tela (1).png
+          id: pair_07233be532844c739d24a631480b64a2
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706541
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_e5ec748570a6467984544401fc7a043c
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849268061
+    created: 1619729703032
+    name: Companies
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678442.1875
+    _type: request_group
+  - _id: req_3dcdca37b0ee497f961b486d2bc54c20
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1623332478209
+    created: 1616797644539
+    url: "{{ _.baseURL }}/v1/persons/5596/contacts"
+    name: Lista contatos de uma empresa
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706491
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bc343cfa0f6d4c7ca2387ea6b8bfec1d
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1624037497651
+    created: 1622231255511
+    url: "{{ _.baseURL }}/v1/companies/5601/cnaes"
+    name: Lista cnaes de uma empresa
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706466
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3b88e78203674326b508748956a6d572
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1624275456111
+    created: 1616797644543
+    url: "{{ _.baseURL }}/v1/companies/5601/logo"
+    name: Retorna logotipo de uma empresa
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706441
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_920d295fa4be4197a29d051bcb32e9f9
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1622400209783
+    created: 1616797644555
+    url: "{{ _.baseURL }}/v1/companies/3"
+    name: Exclui uma empresa
+    description: Exclui uma empresa.
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706391
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e3a287ebcebc4d0580a544b1ec4ab44c
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1620759642037
+    created: 1616797644561
+    url: "{{ _.baseURL }}/v1/companies/9"
+    name: Altera uma empresa
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+          "name": "ACME Inc.",
+          "email": "acme@acme.com",
+          "cnae": "1234567",
+          "taxRegime": "testesteste",
+          "juridical": {
+            "cnpj": "123456"
+          },
+          "telephone": {
+            "number": "1234556"
+          },
+          "address": {
+            "city": { "id": 1 }
+          },
+          "contacts": {
+            "content": [
+              {
+                "id": 144,
+                "name": "Maria da Silva"
+              },
+              {
+                "name": "José Manoel"
+              }
+            ]
+          }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_07160d696b674e1e99488f599f56bb8b
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706341
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ee0853795be0415b8e4e1ba223d9bb92
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1623433731068
+    created: 1616797644567
+    url: "{{ _.baseURL }}/v1/persons"
+    name: Cadastra empresa
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"name": "ACME Inc.",
+        	"status": "ACTIVE",
+        	"type": "JURIDICAL",
+        	"juridical": {
+        		"cnpj": "1234567891",
+        		"companyName": "Razão social",
+        		"suffrageCode": "123456",
+        		"municipalCode": "12345689",
+        		"calculationMethod": "CASHIER",
+        		"taxRegime": "SIMPLE_NATIONAL"
+        	},
+        	"taxpayer": "NON_TAXPAYER",
+        	"stateCode": "123456",
+        	"company": {
+        		"mainCnae": {
+        			"id": 1
+        		},
+        		"cnaes": {
+        			"content": [
+        				{
+        					"id": 10
+        				}
+        			]
+        		}
+        	},
+        	"address": {
+        		"city": {
+        			"id": 1
+        		},
+        		"zipCode": "12345678",
+        		"publicPlace": "Rua X",
+        		"district": "Bairro",
+        		"number": "1"
+        	},
+        	"note": "Observações",
+        	"contacts": {
+        		"content": [
+        			{
+        				"main": false,
+        				"name": "Contato 1",
+        				"email": "email@email.com",
+        				"description": "ligar não",
+        				"phone": {
+        					"ddd": "31",
+        					"number": "988887777"
+        				}
+        			},
+        			{
+        				"main": true,
+        				"name": "Contato 2",
+        				"email": "email2@email.com",
+        				"description": "ligar não",
+        				"phone": {
+        					"ddd": "35",
+        					"number": "988887776"
+        				}
+        			}
+        		]
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c601a273cd8c4e11b53e4825fb7b1fd3
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706291
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b312d4b5dc6446ee984bf11c81797451
+    parentId: fld_e5ec748570a6467984544401fc7a043c
+    modified: 1622400597279
+    created: 1616797644571
+    url: "{{ _.baseURL }}/v1/companies"
+    name: Lista empresas
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706241
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_294a93e8eb294f93830f5ff0a3d38128
+    parentId: fld_5cebe70a297048a68ddd9bc298252458
+    modified: 1620759790791
+    created: 1616797644521
+    url: "{{ _.baseURL }}/v1/countries"
+    name: Lista países
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706201
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5cebe70a297048a68ddd9bc298252458
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849260682
+    created: 1619729841691
+    name: Countries
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678440.625
+    _type: request_group
+  - _id: req_e15fe21ed23943e5bbdedb25d63de796
+    parentId: fld_5cebe70a297048a68ddd9bc298252458
+    modified: 1623151418021
+    created: 1623150992187
+    url: "{{ _.baseURL }}/v1/countries/1"
+    name: Atualiza país
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+           "name": "Brasil",
+           "officialCode": 1058,
+           "currency": {
+               "id": 1
+           }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7f2568094373440286233409ef7846e4
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1212613744342
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c8b9fb557116447793999898c31b0234
+    parentId: fld_169ce4070c2d40aeb9c6ee41e13d9d31
+    modified: 1623249609633
+    created: 1622400881227
+    url: "{{ _.baseURL }}/v1/cnaes?paged=false"
+    name: Lista cnaes
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620305255739
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_169ce4070c2d40aeb9c6ee41e13d9d31
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849264807
+    created: 1622400881210
+    name: Cnaes
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678439.0625
+    _type: request_group
+  - _id: req_e3bccb84cd45439a9aaff807d4ae88ba
+    parentId: fld_5e70882dab7a4e318ee8f8b14c625f0b
+    modified: 1623878463239
+    created: 1623849391490
+    url: "{{ _.baseURL }}/v1/currencies"
+    name: Cadastrar moeda
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Dólar americano",
+        	"symbol": "$SS",
+        	"isoCode": "US"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7f2568094373440286233409ef7846e4
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619729678486.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5e70882dab7a4e318ee8f8b14c625f0b
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849315219
+    created: 1623849309399
+    name: Currencies
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678437.5
+    _type: request_group
+  - _id: req_d8e253918dc2431d8880c14a8eb29fe3
+    parentId: fld_5e70882dab7a4e318ee8f8b14c625f0b
+    modified: 1623849339004
+    created: 1623849324956
+    url: "{{ _.baseURL }}/v1/currencies"
+    name: Lista moedas
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619729678436.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9e3ef8e590de465088a01de411e6a5be
+    parentId: fld_5e70882dab7a4e318ee8f8b14c625f0b
+    modified: 1623850797519
+    created: 1623850769643
+    url: "{{ _.baseURL }}/v1/currencies/iso/AB"
+    name: Buscar pelo código ISO
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619553026990.789
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2be0d91670fe4d39881c59eafc3568c5
+    parentId: fld_5e70882dab7a4e318ee8f8b14c625f0b
+    modified: 1623849365118
+    created: 1623849358371
+    url: "{{ _.baseURL }}/v1/currencies/1/countries"
+    name: Lista países da moeda
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619376375544.8594
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_79cca774e4d348979715aebdae435732
+    parentId: fld_13734dd26b8c45d39ba80a25b522f95f
+    modified: 1620328844863
+    created: 1620328831382
+    url: "{{ _.baseURL }}/v1/customers"
+    name: Exclui cliente
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620328831382
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_13734dd26b8c45d39ba80a25b522f95f
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1622400371038
+    created: 1620305245102
+    name: Customer
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.9375
+    _type: request_group
+  - _id: req_1f17254f1293453d80530d09666763d8
+    parentId: fld_13734dd26b8c45d39ba80a25b522f95f
+    modified: 1621524289380
+    created: 1620328810372
+    url: "{{ _.baseURL }}/v1/customers/3"
+    name: Atualiza cliente
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Vinicius",
+            "email": "acme@acme.com",
+            "cnae": "1234567",
+            "taxRegime": "testesteste",
+            "juridical": {
+                "cnpj": "123456"
+            },
+            "telephone": {
+                "number": "1234556"
+            },
+
+            "address": {
+                "city": { "id": 1 }
+            },
+
+            "contacts": {
+                "content": [
+                    {
+                        "name": "Maria da Silva"
+                    },
+                    {
+                        "name": "José Manoel"
+                    }
+                ]
+            }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_9e2335dbf4b04dc29e573734c975802e
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620328810372
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ae52139a1207479f9b1cee26bbca2a87
+    parentId: fld_13734dd26b8c45d39ba80a25b522f95f
+    modified: 1621526456325
+    created: 1620306061571
+    url: "{{ _.baseURL }}/v1/customers"
+    name: Cadastra cliente
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "ACME Inc.",
+            "email": "acme@acme.com",	
+        	
+            "juridical": {
+                "cnpj": "123456"
+            },
+
+            "address": {
+                "city": { "id": 1 }
+            },
+        	
+        	 "contacts": {
+                "content": [
+                    {
+                        "name": "Maria da Silva"
+                    },
+                    {
+                        "name": "José Manoel"
+                    }
+                ]
+            }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_34518e935a5941ffbcc11be872b59781
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620306061572
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d46436e81eab45129bfcd72b0f550b9e
+    parentId: fld_13734dd26b8c45d39ba80a25b522f95f
+    modified: 1620305311987
+    created: 1620305255739
+    url: "{{ _.baseURL }}/v1/customers"
+    name: Lista clientes
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620305255739
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1b3074987e4649bbbd03d3675469cdef
+    parentId: fld_96a4c00dd75e48ff86208836bd1bbd4f
+    modified: 1619729818520
+    created: 1617207359795
+    url: "{{ _.baseURL }}/v1/customer-classify"
+    name: Lista classificação de cliente
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1617207359795
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_96a4c00dd75e48ff86208836bd1bbd4f
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623849298175
+    created: 1619729811728
+    name: Customer classify
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.7422
+    _type: request_group
+  - _id: req_a6676d77aa7d4c5b9738d4c8eaa1fd4f
+    parentId: fld_262cb27ba41d4e71ab01418bb91a30ca
+    modified: 1623936555401
+    created: 1623936431097
+    url: "{{ _.baseURL }}/v1/market-segments"
+    name: Cadastrar segmento
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Segmento de mercado teste 1",
+        	"status": "ACTIVE"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_7f2568094373440286233409ef7846e4
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619729678486.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_262cb27ba41d4e71ab01418bb91a30ca
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1623936434127
+    created: 1623936431082
+    name: Market Segment
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.6934
+    _type: request_group
+  - _id: req_43a0fb0beb894403b853c850de1f7bdf
+    parentId: fld_262cb27ba41d4e71ab01418bb91a30ca
+    modified: 1623936562089
+    created: 1623936431088
+    url: "{{ _.baseURL }}/v1/market-segments"
+    name: Listar segmentos
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619729678436.7188
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_98e286d3b4cf462ca3b2aeaab33f3d58
+    parentId: fld_262cb27ba41d4e71ab01418bb91a30ca
+    modified: 1623937086930
+    created: 1623936431102
+    url: "{{ _.baseURL }}/v1/market-segments/5699"
+    name: Buscar pelo id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619553026990.789
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_503fc1af144541a7b17b432731d2a5ca
+    parentId: fld_262cb27ba41d4e71ab01418bb91a30ca
+    modified: 1623954762001
+    created: 1623936431094
+    url: "{{ _.baseURL }}/v1/market-segments/5602"
+    name: Atualizar segmento
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Segmento de mercado teste 1 atualizado",
+        	"status": "INACTIVE"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_b7858eeedd3140989f7e0bc516ea9a02
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619376375544.8594
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fe03aabacc2d4966acc2b87bef63cf74
+    parentId: fld_262cb27ba41d4e71ab01418bb91a30ca
+    modified: 1623937146589
+    created: 1623936525870
+    url: "{{ _.baseURL }}/v1/market-segments/5699"
+    name: Excluir segmento
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619199724098.9297
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7ff0d0af02464ab5bd5503c35eb47cad
+    parentId: fld_cbf855113d704aaa81135734a9544582
+    modified: 1622160483889
+    created: 1622160460859
+    url: "{{ _.baseURL }}/v1/persons"
+    name: Lista pessoas
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1622160460859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_cbf855113d704aaa81135734a9544582
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1622400378806
+    created: 1622160439866
+    name: Persons
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.5469
+    _type: request_group
+  - _id: req_28e2ea88fa294caa8969abe161484f9e
+    parentId: fld_cbf855113d704aaa81135734a9544582
+    modified: 1625838973351
+    created: 1625838948029
+    url: "{{ _.baseURL }}/v1/persons/search"
+    name: Pesquisa pessoa
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_3009e006cf4841ebae303d4cbd368bec
+        name: fields
+        value: contacts.name
+        description: ""
+      - id: pair_3e56888d866c4dd4bab460a813b5acf1
+        name: term
+        value: jos
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1622160460852.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_af55c98206574922baf94611755702e5
+    parentId: fld_cbf855113d704aaa81135734a9544582
+    modified: 1625262557420
+    created: 1622399269757
+    url: "{{ _.baseURL }}/v1/persons"
+    name: Cadastra pessoa
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"name": "ACME Inc.",
+        	"status": "ACTIVE",
+        	"type": "JURIDICAL",
+        	"taxpayer": "NON_TAXPAYER", 
+        	"juridical": {
+        		"cnpj": "123456"
+        	},
+        	"address": {
+        		"city": {
+        			"id": 1
+        		}
+        	},
+        	"company": {
+        		"mainCnae": {
+        			"id": 15
+        		},
+        		"cnaes": {
+        			"content": [
+        				{
+        					"id": 1
+        				},
+        				{
+        					"id": 105
+        				},
+        				{
+        					"id": 155
+        				}
+        			]
+        		}
+        	},
+        	"contacts": {
+        		"content": [
+        			{
+        				"main": true,
+        				"name": "Contato 2",
+        				"email": "email2@email.com",
+        				"description": "ligar não",
+        				"phone": {
+        					"ddd": "35",
+        					"number": "988887776"
+        				}
+        			}
+        		]
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c601a273cd8c4e11b53e4825fb7b1fd3
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1622160460834
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_817f9769a5ab462d9dfe9ad2c5787973
+    parentId: fld_cbf855113d704aaa81135734a9544582
+    modified: 1625262573078
+    created: 1622399873767
+    url: "{{ _.baseURL }}/v1/persons"
+    name: Cadastra company - Pessoa existente
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"name": "ACME Inc.",
+        	"status": "ACTIVE",
+        	"type": "JURIDICAL",
+        	"taxpayer": "NON_TAXPAYER",
+        	"juridical": {
+        		"cnpj": "1234567899"
+        	},
+        	"address": {
+        		"city": {
+        			"id": 1
+        		}
+        	},
+        	"isCarrier": false,
+        	"isCompany": false,
+        	"isCustomer": true,
+        	"isVendor": false,
+        	"customer": {
+        		"marketSegment": {
+        			"id": 5624
+        		}
+        	},
+        	"contacts": {
+        		"content": [
+        			{
+        				"main": true,
+        				"name": "Contato 2",
+        				"email": "email2@email.com",
+        				"description": "ligar não",
+        				"phone": {
+        					"ddd": "35",
+        					"number": "988887776"
+        				}
+        			}
+        		]
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c601a273cd8c4e11b53e4825fb7b1fd3
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1622160460821.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fd5f4f21c4f5415bad66060e2aa94153
+    parentId: fld_cbf855113d704aaa81135734a9544582
+    modified: 1625145317313
+    created: 1622209170587
+    url: "{{ _.baseURL }}/v1/persons/5837"
+    name: Deleta pessoa
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1622160460809
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_64f777c30e424053bb17a081009a66b5
+    parentId: fld_7f539a1ddab64dcfa09635f337fe229e
+    modified: 1625777344441
+    created: 1625775934405
+    url: "{{ _.baseURL }}/v1/products/6341"
+    name: Exclui um Produto
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a21c14daf3eb4b6e9afa0285711608c4
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072653
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7f539a1ddab64dcfa09635f337fe229e
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1625775943732
+    created: 1625775934393
+    name: Product
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.3516
+    _type: request_group
+  - _id: req_5dc76737b4c34b9d91f03d4ffac2c7da
+    parentId: fld_7f539a1ddab64dcfa09635f337fe229e
+    modified: 1625835114332
+    created: 1625775934421
+    url: "{{ _.baseURL }}/v1/products"
+    name: Lista produtos
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072603
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e39e9800ce194fa58d333f6ff236efeb
+    parentId: fld_7f539a1ddab64dcfa09635f337fe229e
+    modified: 1625835547281
+    created: 1625835132955
+    url: "{{ _.baseURL }}/v1/products/search"
+    name: Pesquisa Produto
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_e5b08f6cc2534af1b091c8b1ff90f682
+        name: fields
+        value: name
+        description: ""
+      - id: pair_c9d98ee70eee4f9a9419f9e19351477a
+        name: term
+        value: aoc
+        description: ""
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072578
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4401638ba0b64a4ab76ace379c2e6163
+    parentId: fld_7f539a1ddab64dcfa09635f337fe229e
+    modified: 1625777333299
+    created: 1625775934415
+    url: "{{ _.baseURL }}/v1/products/6340"
+    name: Altera um produto
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"name": "Monitor AOC",
+        	"status": "ACTIVE",
+        	"ncmCode": "12345678",
+        	"gtinCode": "12345678910111",
+        	"gtinCodeTax": "12345678910111",
+        	"format": "SAMPLE",
+        	"salePrice": 985.50,
+        	"description": "Descrição do Monitor AOC 23'",
+        	"shortDescription": "Descrição curta do Monitor AOC 23'",
+          "note": "Observações do Monitor AOC 23'"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_328cbd6d43df40828042435a16106ed6
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072553
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_038ffad714cd474bb42e03a020abf30c
+    parentId: fld_7f539a1ddab64dcfa09635f337fe229e
+    modified: 1625777099933
+    created: 1625775934425
+    url: "{{ _.baseURL }}/v1/products"
+    name: Cadastra um produto
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"name": "Monitor AOC",
+        	"status": "ACTIVE",
+        	"ncmCode": "12345678"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e3e0556b4a4e408ab21f6f80ed3a16d7
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+      disabled: false
+    metaSortKey: -1619023072503
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_36b9eed4243d476d84fd0abd183b31ac
+    parentId: fld_8aad0e1cfa6d425d8f5f5e1c1dbb7167
+    modified: 1622160415185
+    created: 1620647446583
+    url: "{{ _.baseURL }}/v1/providers/22"
+    name: Delete provider
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620328831382
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_8aad0e1cfa6d425d8f5f5e1c1dbb7167
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1620647446574
+    created: 1620647446574
+    name: Provider
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678435.1562
+    _type: request_group
+  - _id: req_7351a4b9a61d4f838470b4a027893810
+    parentId: fld_8aad0e1cfa6d425d8f5f5e1c1dbb7167
+    modified: 1622158365759
+    created: 1620647008997
+    url: "{{ _.baseURL }}/v1/providers"
+    name: List provider
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620328820877
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9bfbecea204a4a2ea6b370b2af07ce90
+    parentId: fld_8aad0e1cfa6d425d8f5f5e1c1dbb7167
+    modified: 1622231376628
+    created: 1620647446581
+    url: "{{ _.baseURL }}/v1/providers/14"
+    name: Update provider
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "name": "Vinicius",
+            "email": "acme@acme.com",
+            "cnae": "1234567",
+            "taxRegime": "testesteste",
+            "juridical": {
+                "cnpj": "123456"
+            },
+            "telephone": {
+                "number": "1234556"
+            },
+
+            "address": {
+                "city": { "id": 1 }
+            },
+
+            "contacts": {
+                "content": [
+                    {
+                        "name": "Maria da Silva"
+                    },
+                    {
+                        "name": "José Manoel"
+                    }
+                ]
+            }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_9e2335dbf4b04dc29e573734c975802e
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620328810372
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7fa3c7b292684c0495da5bb726ec3665
+    parentId: fld_8aad0e1cfa6d425d8f5f5e1c1dbb7167
+    modified: 1622239653616
+    created: 1620647446579
+    url: "{{ _.baseURL }}/v1/persons/3"
+    name: Register provider
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "ACME Inc.",
+          "status": "ACTIVE",
+          "email": "acme@acme.com",
+          "juridical": {
+            "cnpj": "123456"
+          },
+          "address": {
+            "city": { "id": 1 }
+          }
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_34518e935a5941ffbcc11be872b59781
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1620306061572
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4b7f0cf8234c47b98865fd5af7e0fa12
+    parentId: fld_1176ec70a6734dc8ade5ae88fc723028
+    modified: 1621298896276
+    created: 1616797644529
+    url: "{{ _.baseURL }}/v1/states"
+    name: Lista estados
+    description: Lista estados
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1614862706212
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1176ec70a6734dc8ade5ae88fc723028
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1622400392502
+    created: 1619729834985
+    name: States
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678431.25
+    _type: request_group
+  - _id: req_fc7934833dcf448e86c6b5cb79eb7955
+    parentId: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    modified: 1623080604879
+    created: 1621560465672
+    url: "{{ _.baseURL }}/v1/cnaes/search"
+    name: Search
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: term
+        value: arroz
+        description: ""
+        id: pair_a3d0e3f8a94a413890458ff049c7166e
+        disabled: false
+      - name: fields
+        value: ""
+        description: ""
+        id: pair_27936f5230db47d29a09a81ab060c356
+        disabled: true
+      - name: filter
+        value: code~'*1301*'
+        description: ""
+        id: pair_f3be62c242714d01af50077f5967ef05
+        disabled: false
+    headers: []
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+    metaSortKey: -1621560465672
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    parentId: fld_9fcc05b5588a4c688f383cc3441bf90e
+    modified: 1622400400990
+    created: 1619729678174
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619729678428.125
+    _type: request_group
+  - _id: req_5eaed2433e8442ef9d088cabe53771ca
+    parentId: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    modified: 1620222290843
+    created: 1616797644585
+    url: "{{ _.baseURL }}/v1/users/7"
+    name: Exclui um usuário
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a21c14daf3eb4b6e9afa0285711608c4
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072653
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_be2babef1dca41a6b3bbe553d270233a
+    parentId: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    modified: 1621625227836
+    created: 1616797644595
+    url: "{{ _.baseURL }}/v1/users?paged=false"
+    name: Lista usuários
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072603
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_655bf5bebb4b46e08630693fd5e8b2af
+    parentId: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    modified: 1620759751325
+    created: 1616797644591
+    url: "{{ _.baseURL }}/v1/users/13"
+    name: Altera um usuário
+    description: ""
+    method: PUT
+    body:
+      mimeType: ""
+      text: |-
+        {
+          "name": "José",
+        	"email": "alterado@email.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_328cbd6d43df40828042435a16106ed6
+    authentication:
+      type: bearer
+      disabled: false
+      token: "{{ _.accessToken }}"
+      prefix: ""
+    metaSortKey: -1619023072553
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b8f952ba14e74b3caa489501a9f5a1dd
+    parentId: fld_6c89fa76d0ee43f89ec9f2d7731dc70e
+    modified: 1623879089746
+    created: 1616797644603
+    url: "{{ _.baseURL }}/v1/users"
+    name: Cadastra um usuário
+    description: ""
+    method: POST
+    body:
+      mimeType: ""
+      text: |-
+        {
+        	"email": "jose@example.com",
+        	"name": "jose",
+        	"password": "ats1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e3e0556b4a4e408ab21f6f80ed3a16d7
+    authentication:
+      type: bearer
+      token: "{{ _.accessToken }}"
+      disabled: false
+    metaSortKey: -1619023072503
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_b26bb6045548f9e4cfe94ccc841d76b4b8371648
+    parentId: wrk_0bb379b3818f451f8b23664e3cef334b
+    modified: 1626133885045
+    created: 1616797631322
+    name: Base Environment
+    data:
+      baseURL: http://localhost:8280
+      accessToken: "{% response 'body', 'req_a7f5aad58fab44d2a10e9981b8ff2f5a',
+        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 10 %}"
+    dataPropertyOrder:
+      "&":
+        - baseURL
+        - accessToken
+    color: null
+    isPrivate: false
+    metaSortKey: 1616797631322
+    _type: environment
+  - _id: jar_b26bb6045548f9e4cfe94ccc841d76b4b8371648
+    parentId: wrk_0bb379b3818f451f8b23664e3cef334b
+    modified: 1616797631326
+    created: 1616797631326
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_f12bb8cbd48f41308862d549e4f0dcce
+    parentId: wrk_0bb379b3818f451f8b23664e3cef334b
+    modified: 1616797630947
+    created: 1616797630947
+    fileName: New Cloud
+    contents: ""
+    contentType: yaml
+    _type: api_spec
