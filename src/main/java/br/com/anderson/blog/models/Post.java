@@ -2,9 +2,11 @@ package br.com.anderson.blog.models;
 
 import br.com.anderson.blog.utils.BasePersistent;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +14,7 @@ import javax.persistence.Table;
 public class Post extends BasePersistent {
 
   private String content;
-  private byte[] image;
-  private String imageMimeType;
+  private Image image;
   private User owner;
 
   public String getContent() {
@@ -24,19 +25,12 @@ public class Post extends BasePersistent {
     return this;
   }
 
-  public byte[] getImage() {
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+  public Image getImage() {
     return image;
   }
-  public Post setImage(byte[] image) {
+  public Post setImage(Image image) {
     this.image = image;
-    return this;
-  }
-
-  public String getImageMimeType() {
-    return imageMimeType;
-  }
-  public Post setImageMimeType(String imageMimeType) {
-    this.imageMimeType = imageMimeType;
     return this;
   }
 

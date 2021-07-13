@@ -118,10 +118,7 @@
         <constraints nullable="false" />
       </column>
       <column name="post_id" type="BIGINT">
-        <constraints
-          nullable="false" foreignKeyName="fk_comments__post" referencedTableName="posts"
-          referencedColumnNames="id" checkConstraint="true"
-        />
+        <constraints nullable="false" />
       </column>
       <column name="owner_id" type="BIGINT">
         <constraints
@@ -133,6 +130,54 @@
         <constraints nullable="false" />
       </column>
     </createTable>
+  </changeSet>
+
+  <changeSet id="create-fk_comments__post" author="Anderson Rocha">
+    <addForeignKeyConstraint
+      baseTableName="comments" baseColumnNames="post_id" constraintName="fk_comments__post"
+      referencedTableName="posts" referencedColumnNames="id" onDelete="CASCADE"
+    />
+  </changeSet>
+
+  <changeSet id="create-table-images" author="Anderson Rocha">
+    <createTable tableName="images">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="pk_images" nullable="false" />
+      </column>
+      <column name="version" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="created_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="updated_at" type="TIMESTAMP WITHOUT TIMEZONE" defaultValueDate="NOW()">
+        <constraints nullable="false" />
+      </column>
+      <column name="content" type="BYTEA">
+        <constraints nullable="false" />
+      </column>
+      <column name="mime_type" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="remove-image-field-in-posts" author="Anderson Rocha">
+    <dropColumn tableName="posts" columnName="image" />
+    <dropColumn tableName="posts" columnName="image_mime_type" />
+  </changeSet>
+
+  <changeSet id="create-linking-between-post-and-image" author="Anderson Rocha">
+    <addColumn tableName="posts">
+      <column name="image_id" type="BIGINT">
+        <constraints nullable="true" />
+      </column>
+    </addColumn>
+
+    <addForeignKeyConstraint
+      baseTableName="comments" baseColumnNames="post_id" constraintName="fk_posts__image"
+      referencedTableName="posts" referencedColumnNames="id" onDelete="CASCADE"
+    />
   </changeSet>
 
 </databaseChangeLog>

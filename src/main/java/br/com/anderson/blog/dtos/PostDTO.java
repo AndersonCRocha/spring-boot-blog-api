@@ -4,24 +4,22 @@ import br.com.anderson.blog.models.Post;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.net.URI;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostDTO {
 
   private Long id;
   private String content;
-  private MultipartFile image;
+  private ImageDTO image;
   private UserDTO owner;
-  private URI imageUri;
+  private MultipartFile file;
 
-  public PostDTO() { }
+  public PostDTO () { }
 
-  public PostDTO(Post post, URI imageUri) {
+  public PostDTO(Post post, ImageDTO image) {
     this.id = post.getId();
     this.content = post.getContent();
+    this.image = image;
     this.owner = new UserDTO(post.getOwner());
-    this.imageUri = imageUri;
   }
 
   public Long getId() {
@@ -40,10 +38,10 @@ public class PostDTO {
     return this;
   }
 
-  public MultipartFile getImage() {
+  public ImageDTO getImage() {
     return image;
   }
-  public PostDTO setImage(MultipartFile image) {
+  public PostDTO setImage(ImageDTO image) {
     this.image = image;
     return this;
   }
@@ -56,11 +54,12 @@ public class PostDTO {
     return this;
   }
 
-  public URI getImageUri() {
-    return imageUri;
+  public MultipartFile getFile() {
+    return file;
   }
-  public PostDTO setImageUri(URI imageUri) {
-    this.imageUri = imageUri;
+  public PostDTO setFile(MultipartFile file) {
+    this.file = file;
     return this;
   }
+
 }
